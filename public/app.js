@@ -3,7 +3,7 @@ const path = require('path');
 const cookieParser = require('cookie-parser');
 const logger = require('morgan');
 const sassMiddleware = require('node-sass-middleware');
-
+const serverless = require('serverless-http');
 const app = express();
 
 app.use(logger('dev'));
@@ -22,3 +22,4 @@ app.use(express.static(__dirname +'/public/pages',{index: false,extensions:['htm
 app.use(express.static(path.join(__dirname, 'public')));
 
 module.exports = app;
+module.exports.handler = serverless(app);
