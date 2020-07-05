@@ -5,6 +5,7 @@ const logger = require('morgan');
 const sassMiddleware = require('node-sass-middleware');
 const serverless = require('serverless-http');
 const app = express();
+const router = express.Router();
 
 app.use(logger('dev'));
 app.use(express.json());
@@ -20,6 +21,7 @@ app.use(sassMiddleware({
 // Routing
 app.use(express.static(__dirname +'/.netlify/functions/public/pages',{index: false,extensions:['html']}));
 app.use(express.static(path.join(__dirname, '/.netlify/functions/public/')));
+app.use('/.netlify/functions/server', router);
 
 module.exports = app;
 module.exports.handler = serverless(app);
