@@ -1,6 +1,7 @@
 {
   "name": "vanillajs-expressjs-exampleapp",
   "version": "0.0.0",
+  "main": "app.js",
   "private": true,
   "scripts": {
     "start": "node app.js"
@@ -12,5 +13,8 @@
     "morgan": "~1.9.1",
     "node-sass-middleware": "0.11.0",
     "serverless-http": "^1.9.1"
+  },
+  "engines": {
+    "node": "12.18.2"
   }
 }

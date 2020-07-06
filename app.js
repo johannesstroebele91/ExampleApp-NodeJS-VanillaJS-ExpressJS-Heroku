@@ -4,6 +4,7 @@ const cookieParser = require('cookie-parser');
 const logger = require('morgan');
 const sassMiddleware = require('node-sass-middleware');
 const app = express();
+const port = process.env.PORT || 8080;
 
 app.use(logger('dev'));
 app.use(express.json());
@@ -16,9 +17,16 @@ app.use(sassMiddleware({
   sourceMap: true
 }));
 
-
 // Routing
 app.use(express.static(__dirname +'/public/pages',{index: false,extensions:['html']}));
 app.use(express.static(path.join(__dirname, '/public')));
+
+app.get("/", function(req, res) {
+  res.render("index")
+});
+
+app.listen(port, function() {
+  console.log("running");
+});
 
 module.exports = app;
