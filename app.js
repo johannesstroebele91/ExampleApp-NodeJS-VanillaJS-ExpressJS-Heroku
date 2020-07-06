@@ -21,10 +21,6 @@ app.use(sassMiddleware({
 app.use(express.static(__dirname +'/public/pages',{index: false,extensions:['html']}));
 app.use(express.static(path.join(__dirname, '/public')));
 
-app.get("/", function(req, res) {
-  res.render("index")
-});
-
 app.listen(port, function() {
   console.log("running");
 });
