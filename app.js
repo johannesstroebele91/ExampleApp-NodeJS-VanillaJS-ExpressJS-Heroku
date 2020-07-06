@@ -22,4 +22,4 @@ app.use(express.static(__dirname +'/public/pages',{index: false,extensions:['htm
 app.use(express.static(path.join(__dirname, '/public')));
 app.set(process.env.PORT || 8080, () => console.log('All is running 8080'));
 
-module.exports = app
+module.exports = app;
