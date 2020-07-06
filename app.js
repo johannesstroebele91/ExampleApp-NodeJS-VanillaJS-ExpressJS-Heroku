@@ -3,9 +3,9 @@ const path = require('path');
 const cookieParser = require('cookie-parser');
 const logger = require('morgan');
 const sassMiddleware = require('node-sass-middleware');
-const serverless = require('serverless-http');
 const app = express();
 
+app.use(express.static('public'));
 app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
@@ -18,8 +18,8 @@ app.use(sassMiddleware({
 }));
 
 // Routing
-app.use(express.static(__dirname +'/.netlify/functions/pages',{index: false,extensions:['html']}));
-app.use(express.static(path.join(__dirname, '/.netlify/functions/')));
+app.use(express.static(__dirname +'/public/pages',{index: false,extensions:['html']}));
+app.use(express.static(path.join(__dirname, '/public')));
+app.set(process.env.PORT || 8080, () => console.log('All is running 8080'));
 
-module.exports = app;
-module.exports.handler = serverless(app);
+module.exports = app
