@@ -17,7 +17,9 @@ app.use(sassMiddleware({
   sourceMap: true
 }));
 
-// Routing
+// Load all of necessary external scripts from node_modules into the app
+app.use('/scripts', express.static(__dirname + '/node_modules'));
+// Load all of the static pages into the fileapp.use(express.static(__dirname +'/public/pages',{index: false,extensions:['html']}));
 app.use(express.static(__dirname +'/public/pages',{index: false,extensions:['html']}));
 app.use(express.static(path.join(__dirname, '/public')));
 
